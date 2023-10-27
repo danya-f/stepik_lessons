@@ -9,5 +9,5 @@ PASSWORD = "//*[@id='id_login_password']"
 
 #INFO
 
-email =
-password =
+email = ''
+password ='dsfsdfsd'
