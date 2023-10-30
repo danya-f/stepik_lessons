@@ -4,7 +4,7 @@ from time import sleep
 import math
 import time
 from selenium.webdriver.support import expected_conditions as EC
-from notebook.lesson1.help_files import *
+from lesson1.help_files import *
 
 def test_fast_ins(driver):
     driver.get('http://suninjuly.github.io/simple_form_find_task.html')
@@ -143,19 +143,30 @@ def test_ec(driver,wait):
 @pytest.mark.parametrize('stepik',[236895,236896,236897,236898,236899,236903,236904,236905])
 def test_stepik(driver,stepik,wait):
     # url = f"https://stepik.org/lesson/{stepik}/step/1"
+    answer = math.log(int(time.time()))
     driver.get(f"https://stepik.org/lesson/{stepik}/step/1")
     wait.until(EC.element_to_be_clickable(LOGIN_STEPIK)).click()
     wait.until(EC.element_to_be_clickable(EMAIL_WIND)).send_keys(my_email)
     wait.until(EC.element_to_be_clickable(PASS_WIND)).send_keys(my_pass)
     driver.find_element(*CONFIRM_LOGPASS).click()
+    sleep(3)
 
-    answer = math.log(int(time.time()))
 
-    wait.until(EC.element_to_be_clickable(OTVET_WINDOW)).send_keys(answer)
+    # sleep(6)
+    # driver.find_element(*OTVET_WINDOW).click()
+    #
+    # driver.find_element(*OTVET_WINDOW).send_keys(answer)
+    # sleep(6)
+    # driver.find_element(*CONFIRM_OTVET).click()
+    # sleep(6)
+
     wait.until(EC.element_to_be_clickable(OTVET_WINDOW)).click()
+    driver.find_element(*OTVET_WINDOW).clear()
+    driver.find_element(*OTVET_WINDOW).send_keys(answer)
+    wait.until(EC.element_to_be_clickable(CONFIRM_OTVET)).click()
     wait.until(EC.element_to_be_clickable(TEXT_ITOG))
-    assert driver.find_element(*TEXT_ITOG).text == 'Correct!', driver.find_element(*TEXT_ITOG).text
-    sleep(2)
+    msg = driver.find_element(*TEXT_ITOG).text
+    assert msg == 'Correct!' , msg
 
 
 

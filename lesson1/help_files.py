@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+import math
+import time
 #SELECTORS
 
 LOGIN = "//*[@id='ember27']"
@@ -20,3 +22,5 @@ my_pass = "Palevo1996"
 email = ''
 password ='dsfsdfsd'
 
+answer = math.log(int(time.time()))
+print(answer)
