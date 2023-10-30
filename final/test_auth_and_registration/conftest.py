@@ -8,6 +8,15 @@ fake = Faker()
 print(fake.password())
 
 
+
+@pytest.fixture()
+def options():
+    options = Options()
+    # options.add_argument('--headless')
+    options.add_argument('--window-size=2880,1800')
+    return options
+
+
 @pytest.fixture()
 def fake_password():
     password = fake.password()
@@ -21,10 +30,16 @@ def fake_email():
 
 
 @pytest.fixture()
-def driver():
-    driver = webdriver.Chrome()
+def driver(options):
+    driver = webdriver.Chrome(options=options)
     yield driver
     driver.quit()
+
+# @pytest.fixture()
+# def driver():
+#     driver = webdriver.Chrome()
+#     yield driver
+#     driver.quit()
 
 
 @pytest.fixture()
