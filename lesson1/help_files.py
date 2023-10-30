@@ -22,5 +22,3 @@ my_pass = "Palevo1996"
 email = ''
 password ='dsfsdfsd'
 
-answer = math.log(int(time.time()))
-print(answer)

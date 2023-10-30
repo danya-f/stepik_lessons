@@ -151,15 +151,6 @@ def test_stepik(driver,stepik,wait):
     driver.find_element(*CONFIRM_LOGPASS).click()
     sleep(3)
 
-
-    # sleep(6)
-    # driver.find_element(*OTVET_WINDOW).click()
-    #
-    # driver.find_element(*OTVET_WINDOW).send_keys(answer)
-    # sleep(6)
-    # driver.find_element(*CONFIRM_OTVET).click()
-    # sleep(6)
-
     wait.until(EC.element_to_be_clickable(OTVET_WINDOW)).click()
     driver.find_element(*OTVET_WINDOW).clear()
     driver.find_element(*OTVET_WINDOW).send_keys(answer)
