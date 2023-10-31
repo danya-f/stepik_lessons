@@ -142,7 +142,6 @@ def test_ec(driver,wait):
 
 @pytest.mark.parametrize('stepik',[236895,236896,236897,236898,236899,236903,236904,236905])
 def test_stepik(driver,stepik,wait):
-    # url = f"https://stepik.org/lesson/{stepik}/step/1"
     answer = math.log(int(time.time()))
     driver.get(f"https://stepik.org/lesson/{stepik}/step/1")
     wait.until(EC.element_to_be_clickable(LOGIN_STEPIK)).click()
